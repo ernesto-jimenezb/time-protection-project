@@ -13,7 +13,7 @@ export function timeProtection(req, res, next) {
     
     // REGLA: Si pasaron menos de 1000ms (1 segundo), es un bot o script
     if (elapsed < 1000) {
-        console.log("Acción sospechosa: solicitud demasiado rápida");
+        console.warn("ALERTA: Bot detectado en IP " + req.ip)
         return res.status(403).send("Acción sospechosa detectada.");
     }
     
