@@ -21,7 +21,14 @@
         
         <button type="submit">Entrar</button>
     </form>
-    
+<script>
+    document.querySelector('form').onsubmit = function() {
+        const btn = this.querySelector('button');
+        btn.disabled = true;
+        btn.innerText = 'Procesando...';
+    };
+</script>
+
     <br>
     <a href="/register">¿No tienes cuenta? Regístrate aquí</a>
 </body>
