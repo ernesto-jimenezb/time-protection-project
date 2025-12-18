@@ -15,10 +15,18 @@ const app = express();
 const prisma = new PrismaClient();
 
 // --- Módulos de Seguridad ---
-app.use(helmet()); // Protege cabeceras HTTP [cite: 117]
+/* HELMET: Ayuda a proteger la aplicación configurando varias cabeceras HTTP de seguridad. 
+   Previene ataques comunes como XSS (Cross-Site Scripting), clics maliciosos (clickjacking) 
+   y asegura que el navegador no adivine el tipo de contenido (MIME sniffing).
+*/
+app.use(helmet()); 
 app.use(express.urlencoded({ extended: true })); // Permite leer datos de formularios
 
 // --- Configuración de Sesión Segura ---
+/* SESSION: Permite almacenar datos del usuario en el servidor a través de múltiples solicitudes. 
+   Asigna un ID único a cada visitante mediante una cookie, lo que permite mantener 
+   el estado de autenticación (saber quién ha iniciado sesión) de forma segura.
+*/
 app.use(session({
   secret: process.env.SESSION_SECRET,
   resave: false,
